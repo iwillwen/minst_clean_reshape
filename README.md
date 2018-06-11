@@ -8,7 +8,7 @@ Clean noise and reshape the minst image into an numpy.ndarray with `0` and `1`.
 
 ```bash
 $ cd minst_clean_reshape
-$ python clean_reshape.py test/images/5.png
+$ python clean_reshape.py test_images/5.png
 
 [[0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1]
  [0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0]
@@ -43,14 +43,10 @@ $ python clean_reshape.py test/images/5.png
 ### Use `cleanAndReshapeImage` programmatically
 
 ```python
-import importlib.util
 import imageio
-
-spec = importlib.util.spec_from_file_location("cleanAndReshape", "/path/to/clean_reshape.py")
-cr = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(cr)
+from clean_reshape import cleanAndReshapeImage
 
 img = imageio.imread("/path/to/image.jpg")
-processedImg = cr.cleanAndReshapeImage(img)
+processedImg = cleanAndReshapeImage(img)
 print(processedImg)
 ```
